@@ -15,12 +15,12 @@ classdef cube
         faces
     end
     methods
-        function obj = cube(X, Y, Z, s, colors)
+        function obj = cube(X, Y, Z, s)
             obj.X = X;
             obj.Y = Y;
             obj.Z = Z;
             obj.s = s;
-            obj.colors = colors;
+            obj.colors = [1,1,1;0,1,0;1,0,0;1,1,0;0,0,1;1,0.7,0];
             obj.vertices = [
                 obj.X, obj.Y, obj.Z+obj.s;
                 obj.X+obj.s, obj.Y, obj.Z+obj.s;
