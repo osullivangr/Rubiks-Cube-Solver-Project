@@ -27,5 +27,6 @@ function faces = turnTop(faces, clockwise)
         faces(1,:,6) = flip(faces(:,1,4));
         faces(:,1,4) = faces(:,1,3);
         faces(:,1,3) = flip(temp);
+        
     end
 end
