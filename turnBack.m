@@ -6,10 +6,7 @@ function faces = turnBack(faces, clockwise)
     if (clockwise)
         
         % Rotate face
-        faces(:,:,4) = faces(:,:,4)';
-        temp = faces(:,1,4);
-        faces(:,1,4) = faces(:,3,4);
-        faces(:,3,4) = temp;
+        faces(:,:,4) = rotateFace(faces(:,:,4),1);
         
         % Rotate edges
         temp = faces(1,:,2);
@@ -22,10 +19,7 @@ function faces = turnBack(faces, clockwise)
     else
     
         % Rotate face
-        temp = faces(:,1,4);
-        faces(:,1,4) = faces(:,3,4);
-        faces(:,3,4) = temp;
-        faces(:,:,4) = faces(:,:,4)';
+        faces(:,:,4) = rotateFace(faces(:,:,4),0);
         
         % Rotate edges
         temp = faces(1,:,2);
