@@ -1,4 +1,4 @@
-function rotateCube(input)
+function faces = rotateCube(faces, axis)
 %%   rotateCube.m
 % input x, xprime, y, yprime, z, or zprime to get desired result. 
 %Christian Cyrul
@@ -8,136 +8,23 @@ function rotateCube(input)
 %%  The Code
 
 
-if strcmp(input,'x')
-    
-  %Rotate right   
-    % Rotate face
-        faces(:,:,3) = rotateFace(faces(:,:,3),1);
-        
-        % Rotate edges
-        temp = faces(:,3,1);
-        faces(:,3,1) = flip(faces(3,:,5));
-        faces(3,:,5) = faces(3,:,4);
-        faces(3,:,4) = flip(faces(:,3,2));
-        faces(:,3,2) = temp;
-        
-  %Rotate left 
-     % Rotate face
-        faces(:,:,6) = rotateFace(faces(:,:,6),0);
-        
-        % Rotate edges
-        temp = faces(:,1,1);
-        faces(:,1,1) = flip(faces(1,:,5));
-        faces(1,:,5) = faces(1,:,4);
-        faces(1,:,4) = flip(faces(:,1,2));
-        faces(:,1,2) = temp;
-        
-  %Rotate middle
-     % Rotate face
-        % faces(:,:,2) = rotateFace(faces(:,:,2),1);
-        
-        % Rotate edges
-        temp = faces(:,2,1);
-        faces(:,2,1) = flip(faces(2,:,5));
-        faces(2,:,5) = faces(2,:,4);
-        faces(2,:,4) = flip(faces(:,2,2));
-        faces(:,2,2) = temp;
-        
-elseif strcmp(input,'xprime')
-    
-   % Rotate face
-        % faces(:,:,2) = rotateFace(faces(:,:,2),0);
-        
-        % Rotate edges
-        temp = faces(:,2,1);
-        faces(:,2,1) = faces(:,2,2);
-        faces(:,2,2) = flip(faces(2,:,4));
-        faces(2,:,4) = faces(2,:,5);
-        faces(2,:,5) = flip(temp);
-        
-   % Rotate face
-        faces(:,:,3) = rotateFace(faces(:,:,3),0);
-        
-        % Rotate edges
-        temp = faces(:,3,1);
-        faces(:,3,1) = faces(:,3,2);
-        faces(:,3,2) = flip(faces(3,:,4));
-        faces(3,:,4) = faces(3,:,5);
-        faces(3,:,5) = flip(temp);
-        
-   % Rotate face
-        faces(:,:,6) = rotateFace(faces(:,:,6),1);
-        
-        % Rotate edges
-        temp = faces(:,1,1);
-        faces(:,1,1) = faces(:,1,2);
-        faces(:,1,2) = flip(faces(1,:,4));
-        faces(1,:,4) = faces(1,:,5);
-        faces(1,:,5) = flip(temp);
-        
-elseif strcmp(input,'y')
-   
-            % Rotate face
-        faces(:,:,1) = rotateFace(faces(:,:,1),1);
-        
-        % Rotate edges
-        temp = faces(3,:,2);
-        faces(3,:,2) = flip(faces(:,3,6));
-        faces(:,3,6) = faces(:,3,5);
-        faces(:,3,5) = flip(faces(3,:,3));
-        faces(3,:,3) = temp;
-        
-        
-                % Rotate face
-        faces(:,:,4) = rotateFace(faces(:,:,4),0);
-        
-        % Rotate edges
-        temp = faces(1,:,2);
-        faces(1,:,2) = flip(faces(:,1,6));
-        faces(:,1,6) = faces(:,1,5);
-        faces(:,1,5) = flip(faces(1,:,3));
-        faces(1,:,3) = temp;
-
-        % Rotate edges
-        temp = faces(2,:,2);
-        faces(2,:,2) = flip(faces(:,2,6));
-        faces(:,2,6) = faces(:,2,5);
-        faces(:,2,5) = flip(faces(2,:,3));
-        faces(2,:,3) = temp;
-                
-        
-elseif strcmp(input,'yprime')
-   
-           % Rotate face
-        faces(:,:,1) = rotateFace(faces(:,:,1),0);
-        
-        % Rotate edges
-        temp = faces(3,:,2);
-        faces(3,:,2) = faces(3,:,3);
-        faces(3,:,3) = flip(faces(:,3,5));
-        faces(:,3,5) = faces(:,3,6);
-        faces(:,3,6) = flip(temp);
-        
-        
-               % Rotate face
-        faces(:,:,4) = rotateFace(faces(:,:,4),1);
-        
-        % Rotate edges
-        temp = faces(1,:,2);
-        faces(1,:,2) = faces(1,:,3);
-        faces(1,:,3) = flip(faces(:,1,5));
-        faces(:,1,5) = faces(:,1,6);
-        faces(:,1,6) = flip(temp);
-        
-                % Rotate edges
-        temp = faces(2,:,2);
-        faces(2,:,2) = faces(2,:,3);
-        faces(2,:,3) = flip(faces(:,2,5));
-        faces(:,2,5) = faces(:,2,6);
-        faces(:,2,6) = flip(temp);
-        
-        
-elseif strcmp(input,'z')
+if strcmp(axis,'x')
+    faces = turnRight(faces, 1);
+    faces = turnLeft(faces, 0);
+    faces = turnCenter(faces, 1);
+elseif strcmp(axis,'xprime')
+    faces = turnRight(faces, 1);
+    faces = turnLeft(faces, 0);
+    faces = turnCenter(faces, 1);
+elseif strcmp(axis,'y')
+    faces = turnFront(faces, 1);
+    faces = turnBack(faces, 0);
+    faces = turnMiddleLeftRight(faces, 1); 
+elseif strcmp(axis,'yprime')
+    faces = turnFront(faces, 1);
+    faces = turnBack(faces, 0);
+    faces = turnMiddleLeftRight(faces, 1); 
+elseif strcmp(axis,'z')
     
             % Rotate face
         % faces(:,:,2) = rotateFace(faces(:,:,2),1);
@@ -170,7 +57,7 @@ elseif strcmp(input,'z')
         faces(:,3,4) = faces(:,3,3);
         faces(:,3,3) = flip(temp);
         
-elseif strcmp(input,'zprime')
+elseif strcmp(axis,'zprime')
     
            % Rotate edges
         temp = faces(2,:,1);
