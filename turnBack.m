@@ -10,10 +10,10 @@ function faces = turnBack(faces, clockwise)
         
         % Rotate edges
         temp = faces(1,:,2);
-        faces(1,:,2) = flip(faces(:,1,6));
-        faces(:,1,6) = faces(:,1,5);
-        faces(:,1,5) = flip(faces(1,:,3));
-        faces(1,:,3) = temp;
+        faces(1,:,2) = faces(1,:,3);
+        faces(1,:,3) = flip(faces(:,1,5));
+        faces(:,1,5) = faces(:,1,6);
+        faces(:,1,6) = flip(temp);
         
     % Counterclockwise
     else
@@ -23,10 +23,12 @@ function faces = turnBack(faces, clockwise)
         
         % Rotate edges
         temp = faces(1,:,2);
-        faces(1,:,2) = faces(1,:,3);
-        faces(1,:,3) = flip(faces(:,1,5));
-        faces(:,1,5) = faces(:,1,6);
-        faces(:,1,6) = flip(temp);
+        faces(1,:,2) = flip(faces(:,1,6));
+        faces(:,1,6) = faces(:,1,5);
+        faces(:,1,5) = flip(faces(1,:,3));
+        faces(1,:,3) = temp;
+        
+
         
     end
 end
