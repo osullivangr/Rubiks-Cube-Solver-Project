@@ -13,6 +13,7 @@ function faces = doWhiteCross(faces)
             while(k1 ~= facesWithColor(i) || k2 ~= facesWithColor(i))
                 faces = turnBottom(faces, 0);
             end
+            faces = whiteCrossHelper(faces, color, facesWithColor, i, k1, k2);
         end
     end
 end
