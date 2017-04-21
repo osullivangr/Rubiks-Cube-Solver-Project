@@ -111,8 +111,14 @@ function [i1,j1,k1,i2,j2,k2,c1,c2] = findEdge(faces, c1, c2)
         end
 
         % find if the piece in top and bottom is in the correct position
-        if (top == c1 && bottom == c2) || (top == c2 && bottom == c1)
-            return;
+        if (top == c1)
+            if (bottom == c2)
+                break;
+            end
+        elseif (top == c2)
+            if (bottom == c1)
+                break;
+            end
         end
     end
 end
