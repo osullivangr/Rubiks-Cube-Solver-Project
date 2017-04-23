@@ -1,19 +1,32 @@
 function faces = doWhiteCross(faces)
-    color = [1,0,0;0,0,1;1,0.7,0;0,1,0];
-    facesWithColor = [2,6,5,3];
+    colors = [1,0,0;0,0,1;1,0.7,0;0,1,0];
     for i=1:4
-        [i1,j1,k1,i2,j2,k2,c1,c2] = findEdge(faces,[1,1,1],color(i));
-        if (c1 == color(i) && k1 == 1) || (c2 == color(i) && k2 == 1)
-            faces = turnFront(faces, 1);
-            faces = turnMiddle(faces, 1);
-            faces = turnFront(faces, 1);
-        elseif (k1 ~= 4 && k2 ~= 4)
-            faces = whiteCrossHelper(faces, color, facesWithColor, i, k1, k2);
-        elseif (k1 == 4 || k2 == 4)
-            while(k1 ~= facesWithColor(i) || k2 ~= facesWithColor(i))
-                faces = turnBottom(faces, 0);
+        [~,~,k1,~,~,k2] = findEdge(faces,[1,1,1],colors(i,:));
+        if (k1 == 5 || k2 == 5)
+            while(k1 ~= 1 && k2 ~= 1)
+                faces = turnBottom(faces, 1);
+                [~,~,k1,~,~,k2] = findEdge(faces,[1,1,1],colors(i,:));
             end
-            faces = whiteCrossHelper(faces, color, facesWithColor, i, k1, k2);
+            faces = turnFront(faces, 1);
+            faces = whiteCrossHelper(faces,colors,i);
+        elseif (k1 == 2 || k2 == 2)
+            if(k1 == 1 || k2 == 1)
+                faces = turnFront(faces, 1);
+            elseif(k1 == 3 || k2 == 3)
+                faces = turnRight(faces, 1);
+            elseif(k1 == 4 || k2 == 4)
+                faces = turnBack(faces, 1);
+            else
+                faces = turnLeft(faces, 1);
+            end
+            faces = whiteCrossHelper(faces,colors,i);
+        else
+            faces = whiteCrossHelper(faces,colors,i);
         end
+        disp(i);
+        faces = rotateCube(faces, 'z');
+    end
+    while(~arrayEqual(faces(2,2,1).getColor,[1,0,0]))
+        faces = turnMiddle(faces, 1);
     end
 end
