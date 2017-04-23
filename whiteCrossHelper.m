@@ -1,16 +1,17 @@
-function faces = whiteCrossHelper(faces,color,facesWithColor,i,k1,k2)
-    while(k1 ~= facesWithColor(i) || k2 ~= facesWithColor(i))
+function faces = whiteCrossHelper(faces,colors,i)
+    [i1,j1,k1,i2,j2,k2] = findEdge(faces,[1,1,1],colors(i,:));
+    while ((k1 ~= 1 || ~arrayEqual(colors(i,:),faces(i1,j1,k1).getColor))&&(k2 ~= 1 || ~arrayEqual(colors(i,:),faces(i2,j2,k2).getColor)))
         faces = turnMiddle(faces, 1);
-        [~,~,k1,~,~,k2,~,~] = findEdge(faces,[1,1,1],color(i));
+        [i1,j1,k1,i2,j2,k2] = findEdge(faces,[1,1,1],colors(i,:));
     end
-    if(k1 == facesWithColor(i))
-        if(k2 == facesWithColor(MOD(i, 4)+1))
+    if(k1 == 1)
+        if(k2 == 3)
             faces = turnFront(faces, 0);
         else
             faces = turnFront(faces, 1);
         end
     else
-        if(k1 == facesWithColor(MOD(i, 4)+1))
+        if(k1 == 3)
             faces = turnFront(faces, 0);
         else
             faces = turnFront(faces, 1);
