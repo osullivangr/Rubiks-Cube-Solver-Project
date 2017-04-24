@@ -1,4 +1,4 @@
-function faces=TopCornerPermute(faces)
+function faces=topCornerPermute(faces)
     % U R U' L U R' U' L'
     CW=1;
     CCW=0;
