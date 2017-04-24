@@ -58,7 +58,7 @@ if num_yellow==2
             
         else
             % case position=[1,2]
-            faces=turnTop(faces,CW);
+            faces=turnTop(faces,CCW);
             faces=FRURUF(faces);
             faces=FRURUF(faces);
         end
