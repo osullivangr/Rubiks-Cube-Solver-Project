@@ -1,4 +1,4 @@
-function faces=OrientCrossEdges(faces)
+function faces=orientCrossEdges(faces)
     % R U R' U R U U R' U
     CW=1;
     CCW=0;
