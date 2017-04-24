@@ -1,4 +1,4 @@
-function faces=RightTopToSide(faces)
+function faces=rightTopToSide(faces)
     % U' F' U F U R U' R'
     CW=1;
     CCW=0;
