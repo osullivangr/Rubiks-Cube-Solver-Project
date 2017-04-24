@@ -6,7 +6,6 @@ function faces = doSecondLayer(faces)
             continue;
         end
         if (k1 ~= 2 && k2 ~= 2)
-            disp('!');
             k = 0;
             while (k1~=1||k2~=3)&&(k1~=3||k2~=1)
                 faces = rotateCube(faces, 'z');
@@ -22,16 +21,13 @@ function faces = doSecondLayer(faces)
         disp(k1)
         disp(k2)
         while((k1~=1||k2~=2)&&(k1~=2||k2~=1))
-            disp('!!');
             faces = turnTop(faces, 1);
             [~,~,k1,~,~,k2] = findEdge(faces,colors(i,:),colors(mod(i,4)+1,:));
         end
         if(~arrayEqual(faces(1,2,1).getColor,faces(2,2,1).getColor))
-            disp('!!!');
             faces = turnTop(faces, 0);
             faces = rightTopToSide(faces);
         else
-            disp('!!!!');
             faces = frontToSide(faces);
         end
         faces = rotateCube(faces, 'z');
