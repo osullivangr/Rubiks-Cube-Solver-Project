@@ -105,7 +105,7 @@ function [i1,j1,k1,i2,j2,k2,i3,j3,k3] = findCorner(faces, c1, c2, c3)
             j3 = 3;
             k3 = 4;
         end
-        if (c1 == top || c1 == left || c1 == right) && (c2 == top || c2 == left || c2 == right) && (c3 == top || c3 == left || c3 == right)
+        if (arrayEqual(c1,top) || arrayEqual(c1,left) || arrayEqual(c1,right)) && (arrayEqual(c2,top) || arrayEqual(c2,left) || arrayEqual(c2,right)) && (arrayEqual(c3,top) || arrayEqual(c3,left) || arrayEqual(c3,right))
             break;
         end
     end
