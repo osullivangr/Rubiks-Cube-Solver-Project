@@ -1,6 +1,7 @@
 % turnFront.m
 
 function faces = turnFront(faces, clockwise)
+    drawCube2(faces,'front',clockwise);
 
     % Clockwise
     if (clockwise)
