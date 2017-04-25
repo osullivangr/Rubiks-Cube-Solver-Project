@@ -23,7 +23,6 @@ function faces = doWhiteCross(faces)
         else
             faces = whiteCrossHelper(faces,colors,i);
         end
-        disp(i);
         faces = rotateCube(faces, 'z');
     end
     while(~arrayEqual(faces(2,2,1).getColor,[1,0,0]))
