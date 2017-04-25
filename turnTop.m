@@ -1,6 +1,7 @@
 % turnTop.m
 
 function faces = turnTop(faces, clockwise)
+    drawCube2(faces,'top',clockwise);
 
     % Clockwise
     if (clockwise)
