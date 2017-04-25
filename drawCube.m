@@ -11,6 +11,8 @@ function drawCube(faces, handles)
         end
     end
     dir = [0.95,-0.6,0];
-    rotate(p,dir,25);
-    axis (handles, off);
+    dir = [1,0,0];
+    rotate(p,dir,90);
+    axis off;
+    axis([-3,3,-3,3,-3,3]);
 end
