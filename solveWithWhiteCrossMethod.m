@@ -12,5 +12,7 @@ faces = rotateCube(faces, 'z');
 faces = doSecondLayer(faces);
 faces = topCross(faces);
 faces = orientEdges(faces);
+faces = placeYellowCorners(faces);
+faces = orientTopCorners(faces);
 clf;
 drawCube(faces);
