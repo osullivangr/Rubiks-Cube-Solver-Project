@@ -18,8 +18,6 @@ function faces = doSecondLayer(faces)
                 k=k+1;
             end
         end
-        disp(k1)
-        disp(k2)
         while((k1~=1||k2~=2)&&(k1~=2||k2~=1))
             faces = turnTop(faces, 1);
             [~,~,k1,~,~,k2] = findEdge(faces,colors(i,:),colors(mod(i,4)+1,:));
