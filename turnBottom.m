@@ -1,6 +1,8 @@
 % turnBottom.m
 
 function faces = turnBottom(faces, clockwise)
+global num_turns
+num_turns=num_turns+1;
     drawCube2(faces,'bottom',clockwise);
     
     % Clockwise
