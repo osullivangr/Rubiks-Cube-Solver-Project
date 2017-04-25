@@ -1,6 +1,8 @@
 % turnMiddle.m
 
 function faces = turnMiddle(faces, clockwise)
+global num_turns
+num_turns=num_turns+1;
 
     % Clockwise
     if (clockwise)
