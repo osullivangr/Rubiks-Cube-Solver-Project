@@ -1,6 +1,7 @@
 % turnBack.m
 
 function faces = turnBack(faces, clockwise)
+    drawCube2(faces,'back',clockwise);
 
     % Clockwise
     if (clockwise)
