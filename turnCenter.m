@@ -2,6 +2,8 @@
 
 function faces = turnCenter(faces, clockwise)
 % the 'Center' is the middle that goes through the top layer
+global num_turns
+num_turns=num_turns+1;
 
     % Clockwise
     if (clockwise)
