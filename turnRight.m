@@ -1,6 +1,8 @@
 % turnRight.m
 
 function faces = turnRight(faces, clockwise)
+global num_turns
+num_turns=num_turns+1;
     drawCube2(faces,'right',clockwise);
 
     % Clockwise
