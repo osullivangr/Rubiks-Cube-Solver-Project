@@ -1,5 +1,5 @@
 function drawCube2(faces, side, clockwise)
-    clf;
+    cla;
     p=[];
     for j=1:3
         for k=1:3
