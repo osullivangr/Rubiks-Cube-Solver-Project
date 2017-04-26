@@ -3,6 +3,8 @@ function faces=blindfold(faces)
     % the solved version using the blindfold method.
     % This function assumes that white is on the face and red is on top
 
+global num_turn
+num_turn=0;
     %% while loop to solve edges
     solved=false; % assume edges not solved
     % Find what edges are solved
