@@ -1,4 +1,6 @@
-initialize;
+function faces=solveWithWhiteCrossMethod(faces)
+global num_turn
+num_turn=0;
 faces = rotateCube(faces, 'x');
 faces = rotateCube(faces, 'z');
 faces = rotateCube(faces, 'z');
@@ -14,5 +16,4 @@ faces = topCross(faces);
 faces = orientEdges(faces);
 faces = placeYellowCorners(faces);
 faces = orientTopCorners(faces);
-clf;
-drawCube(faces);
+
